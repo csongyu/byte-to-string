@@ -17,8 +17,8 @@ public class BinaryByteToStringServiceImplTest {
     public void givenBinaryData_whenUseHexConvertBytesToStringThenBackToBytes_thenEquals()
         throws IOException, DecoderException {
         final byte[] source = Files.readAllBytes(Paths.get("src/test/resources/profile.png"));
-        final String str = this.byteToStringService.convert(source, Encoding.HEX);
-        final byte[] target = this.byteToStringService.convert(str, Encoding.HEX);
+        final String str = this.byteToStringService.encode(source, Encoding.HEX);
+        final byte[] target = this.byteToStringService.decode(str, Encoding.HEX);
         assertEquals(Arrays.toString(source), Arrays.toString(target));
     }
 
@@ -26,8 +26,8 @@ public class BinaryByteToStringServiceImplTest {
     public void givenBinaryData_whenUseBase64ConvertBytesToStringThenBackToBytes_thenEquals()
         throws IOException, DecoderException {
         final byte[] source = Files.readAllBytes(Paths.get("src/test/resources/profile.png"));
-        final String str = this.byteToStringService.convert(source, Encoding.BASE_64);
-        final byte[] target = this.byteToStringService.convert(str, Encoding.BASE_64);
+        final String str = this.byteToStringService.encode(source, Encoding.BASE_64);
+        final byte[] target = this.byteToStringService.decode(str, Encoding.BASE_64);
         assertEquals(Arrays.toString(source), Arrays.toString(target));
     }
 
@@ -35,8 +35,8 @@ public class BinaryByteToStringServiceImplTest {
     public void givenBinaryData_whenUseIsoConvertBytesToStringThenBackToBytes_thenEquals()
         throws IOException, DecoderException {
         final byte[] source = Files.readAllBytes(Paths.get("src/test/resources/profile.png"));
-        final String str = this.byteToStringService.convert(source, Encoding.ISO_8859_1);
-        final byte[] target = this.byteToStringService.convert(str, Encoding.ISO_8859_1);
+        final String str = this.byteToStringService.encode(source, Encoding.ISO_8859_1);
+        final byte[] target = this.byteToStringService.decode(str, Encoding.ISO_8859_1);
         assertEquals(Arrays.toString(source), Arrays.toString(target));
     }
 }

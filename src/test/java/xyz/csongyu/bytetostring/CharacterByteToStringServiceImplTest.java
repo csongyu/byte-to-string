@@ -17,16 +17,16 @@ public class CharacterByteToStringServiceImplTest {
     @Test
     public void givenTextData_whenConvertStringToBytesThenBackToString_thenEquals() {
         final String source = "raw character";
-        final byte[] bytes = this.byteToStringService.convert(source, StandardCharsets.UTF_8);
-        final String target = this.byteToStringService.convert(bytes, StandardCharsets.UTF_8);
+        final byte[] bytes = this.byteToStringService.decode(source, StandardCharsets.UTF_8);
+        final String target = this.byteToStringService.encode(bytes, StandardCharsets.UTF_8);
         assertEquals(source, target);
     }
 
     @Test
     public void givenBinaryData_whenUseUtf8ConvertBytesToStringThenBackToBytes_thenIncorrect() throws IOException {
         final byte[] source = Files.readAllBytes(Paths.get("src/test/resources/profile.png"));
-        final String str = this.byteToStringService.convert(source, StandardCharsets.UTF_8);
-        final byte[] target = this.byteToStringService.convert(str, StandardCharsets.UTF_8);
+        final String str = this.byteToStringService.encode(source, StandardCharsets.UTF_8);
+        final byte[] target = this.byteToStringService.decode(str, StandardCharsets.UTF_8);
         assertNotEquals(Arrays.toString(source), Arrays.toString(target));
     }
 }

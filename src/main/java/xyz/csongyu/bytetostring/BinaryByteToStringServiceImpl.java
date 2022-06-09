@@ -9,12 +9,12 @@ import org.apache.commons.codec.binary.Hex;
 
 public class BinaryByteToStringServiceImpl implements ByteToStringService {
     @Override
-    public String convert(final byte[] bytes, final Charset charset) {
+    public String encode(final byte[] bytes, final Charset charset) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public String convert(final byte[] bytes, final Encoding encoding) {
+    public String encode(final byte[] bytes, final Encoding encoding) {
         return switch (encoding) {
             case HEX -> Hex.encodeHexString(bytes);
             case BASE_64 -> Base64.getEncoder().encodeToString(bytes);
@@ -23,12 +23,12 @@ public class BinaryByteToStringServiceImpl implements ByteToStringService {
     }
 
     @Override
-    public byte[] convert(final String str, final Charset charset) {
+    public byte[] decode(final String str, final Charset charset) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public byte[] convert(final String str, final Encoding encoding) throws DecoderException {
+    public byte[] decode(final String str, final Encoding encoding) throws DecoderException {
         return switch (encoding) {
             case HEX -> Hex.decodeHex(str);
             case BASE_64 -> Base64.getDecoder().decode(str);
